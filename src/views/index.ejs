@@ -337,6 +337,7 @@
     const submitButton = document.querySelector('.chat-submit-button');
     submitButton.innerHTML = '<i class="bi bi-three-dots loading"></i>';
     // submitButton.classList.add('loading');
+    submitButton.disabled = true;
 
         let chatId = localStorage.getItem('chatId');
         console.log("generated chat id : ", chatId)
@@ -370,6 +371,9 @@
 
         // Clear the question input
         questionInput.value = '';
+        submitButton.innerHTML = '<i class="bi bi-send"></i>'
+        submitButton.disabled = false;
+        
 
       } catch (error) {
         console.error("Error submitting question:", error);
@@ -378,11 +382,8 @@
       } finally {
         // Enable input field
         questionInput.disabled = false;
+        submitButton.disabled = false;
 
-        // Change button icon back to send icon and remove loading animation
-    const submitButton = document.querySelector('.chat-submit-button');
-    submitButton.innerHTML = '<i class="bi bi-send"></i>';
-    // submitButton.classList.remove('loading');
       }
     });
 
