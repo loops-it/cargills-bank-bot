@@ -27,8 +27,8 @@ export const chatResponse = async (req: RequestWithChatId, res: Response) => {
 
     // console.log("req : ", req.body.chatId)
     const index = pc.index("dfccchatbot");
-    const namespace = index.namespace('frimi-data')
-    //frimi-data
+    const namespace = index.namespace('cargills-data')
+    //cargills-data
 
     let userChatId = req.body.chatId || "";
     let language = req.body.language;
@@ -123,7 +123,7 @@ export const chatResponse = async (req: RequestWithChatId, res: Response) => {
 
          
 
-const questionRephrasePrompt = `As a senior banking assistant, kindly assess whether the FOLLOWUP QUESTION related to the CHAT HISTORY or if it introduces a new question. If the FOLLOWUP QUESTION is unrelated, refrain from rephrasing it. However, if it is related, please rephrase it as an independent query utilizing relevent keywords from the CHAT HISTORY, even if it is a question related to the calculation. If the user asks for information like email or address, provide Frimi email and address.
+const questionRephrasePrompt = `As a senior banking assistant, kindly assess whether the FOLLOWUP QUESTION related to the CHAT HISTORY or if it introduces a new question. If the FOLLOWUP QUESTION is unrelated, refrain from rephrasing it. However, if it is related, please rephrase it as an independent query utilizing relevent keywords from the CHAT HISTORY, even if it is a question related to the calculation. If the user asks for information like email or address, provide Cargills email and address.
 ----------
 CHAT HISTORY: {${chatHistoryString}}
 ----------
@@ -193,7 +193,7 @@ Standalone question:`
             if (chatHistory.length === 0 || chatHistory[0].role !== 'system') {
                 chatHistory.unshift({ role: 'system', content: '' });
             }
-            chatHistory[0].content = `You are a helpful assistant and you are friendly. Your name is Frimi GPT. Answer user question Only based on given Context: ${context}, your answer must be less than 150 words. If the user asks for information like your email or address, you'll provide Frimi email and address. If answer has list give it as numberd list. If it has math question relevent to given Context give calculated answer, If user question is not relevent to the Context just say "I'm sorry.. no information documents found for data retrieval.". Do NOT make up any answers and questions not relevant to the context using public information.`;
+            chatHistory[0].content = `You are a helpful assistant and you are friendly. Your name is Cargills GPT. Answer user question Only based on given Context: ${context}, your answer must be less than 150 words. If the user asks for information like your email or address, you'll provide Cargills email and address. If answer has list give it as numberd list. If it has math question relevent to given Context give calculated answer, If user question is not relevent to the Context just say "I'm sorry.. no information documents found for data retrieval.". Do NOT make up any answers and questions not relevant to the context using public information.`;
             // console.log("Frontend Question : ", chatHistory);
         }
 
@@ -341,7 +341,7 @@ Standalone question:`
             //   });
 
             //   const ids = fileIds.map(file => file.file_id);
-            // const fetchResult = await index.namespace('frimi-data').fetch(ids);
+            // const fetchResult = await index.namespace('cargills-data').fetch(ids);
             // const documents = Object.values(fetchResult.records).map(record => {
             //     if (record.metadata) {
             //         return record.metadata.Title;
